@@ -1,0 +1,84 @@
+
+
+//______________ See _settings for set up size button __________
+
+$listButtons : ('save','delete','modify','cancel');
+@if length($addButtons) > 0{
+    $listButtons : join($listButtons,$addButtons);
+}
+
+button{
+    border:none;
+    cursor: inherit;
+    font-size: inherit;
+
+}
+/*              BUTTONS
+================================================== */
+button.btn,a.btn{
+
+    display: inline-block;
+    color: white;
+    padding: .5em;
+    text-decoration: none;
+    text-align: center;
+    min-width: $btn-size_min ;
+    outline: none;
+    will-change: box-shadow;
+    cursor:pointer;
+    @include transition(all 0.5s $transition-type);
+
+    //*      Flat
+    //--------------------------*/
+    &-flat{
+        &-border{
+            border: $btn-border;
+        } 
+    }
+
+    //*      rounded
+    //-------------------------*/
+    &-rounded{
+        border-radius: $btn-rounded_radius;
+        &-border {
+            @extend .btn-rounded;
+            border: $btn-border;
+        }
+    }
+
+    //*      shadow
+    //-------------------------*/
+    &-shadow{
+        @include shadow($box-shadow);
+        &_up{
+            @include shadow($box-shadow_up);
+        }
+        &_hov:hover{
+            @include shadow($box-shadow_hover);
+         }  
+    }
+    
+
+
+    //*       Iteration button 
+    //=========================================== */
+    @each $item in $listButtons{
+        &.btn_#{$item}{
+            background:color($item);
+            &:hover{
+                background:color($item,'light');
+            }
+
+            @each $orientation in $orientation-gradient-list{
+                $key : nth($orientation,1); 
+                &.gradient_#{$key}{  
+                        
+                     background: gradient(color($item),$key );
+                    &:hover{
+                        opacity: .8;
+                    }
+                }
+            }
+        }
+    }
+}

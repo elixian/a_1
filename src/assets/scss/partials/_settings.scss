@@ -1,0 +1,43 @@
+$debug : false;
+//
+//*    GLOBAL SETTINGS
+//===============================================*/
+
+$transition-type : cubic-bezier(0.165, 0.84, 0.44, 1);
+
+$orientation-gradient-list : (   
+    'top' :0,
+    'right':90deg,
+    'bottom':180deg,
+    'left':270deg
+);
+
+//*    Button settings
+//=============================================== */
+$btn-size_min : 150px  !default; // size button
+$btn-rounded_radius : 6px !default; // border-radius
+$btn-border : 1px solid rgba(0, 0, 0,.6) !default;
+$addButtons: ();  // add buttons, use the name class ie .btn-foo $addButtons(foo)
+$box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.9);
+$box-shadow_up: 0px 0px (nth($box-shadow,3) + 3) rgba(0, 0, 0, 0.911);
+
+$test : length($box-shadow);
+@warn "test : #{$test}";
+
+$box-shadow_hover : 0px 0px 6px rgba(0, 0, 0, 0.911);    // effet sur le hover button;
+@if $debug{
+    @warn "ok is true";
+    .debug , .grid>div{
+        border: 1px dotted red;
+    }
+}
+
+//      INPUTS
+//================================================= 
+
+$font-input : 15px/24px 'Muli', sans-serif;
+$size-global-inputs : 250px;
+
+$input-border-color:#bebebe;
+$input-border-color_focus:#d81396;
+$input-background-color-focus:lighten($input-border-color,5%);

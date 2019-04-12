@@ -1,0 +1,118 @@
+@import '../functions/functions.scss';
+
+
+//***************************************
+//*             FONT                   **
+//***************************************
+  @mixin font-size($size) {
+    font-size: $size;
+    font-size: calculateRem($size);
+  }
+
+
+//***************************************
+//*             MEDIA                  **
+//***************************************
+
+@mixin bp-large {
+    @media only screen and (max-width: 60em) {
+      @content;
+    }
+  }
+  
+  @mixin bp-medium {
+    @media only screen and (max-width: 40em) {
+      @content;
+    }
+  }
+  
+  @mixin bp-small {
+    @media only screen and (max-width: 30em) {
+      @content;
+    }
+  }
+
+//***************************************
+//*             ANIMATION              **
+//***************************************
+
+@mixin keyframes($animation-name) {
+    @-webkit-keyframes #{$animation-name} {
+        @content;
+    }
+    @-moz-keyframes #{$animation-name} {
+        @content;
+    }  
+    @-ms-keyframes #{$animation-name} {
+        @content;
+    }
+    @-o-keyframes #{$animation-name} {
+        @content;
+    }  
+    @keyframes #{$animation-name} {
+        @content;
+    }
+}
+
+@mixin animation($str) {
+  -webkit-animation: #{$str};
+  -moz-animation: #{$str};
+  -ms-animation: #{$str};
+  -o-animation: #{$str};
+  animation: #{$str};      
+}
+        //******** USAGE ***************
+        //*
+        //@include keyframes(psod){
+        //    0%  {opacity:1;}
+        //     90% { opacity:0;}
+        // };
+        // @include animation('psod 5s 3');
+        // */
+
+//***************************************
+//*             TRANSITION              **
+//***************************************
+
+@mixin transition($args_trans...) {
+    -webkit-transition: $args_trans;
+    -moz-transition: $args_trans;
+    -ms-transition: $args_trans;
+    -o-transition: $args_trans;
+    transition: $args_trans;
+  }
+
+  //***************************************
+//*             SHADOW-BOX             **
+//***************************************
+
+@mixin shadow($args...){
+  @if length($args) == 0 { $args:0px 0px 3px rgba(0,0,0,.6)}
+  -webkit-box-shadow: $args;
+  -moz-box-shadow: $args;
+  box-shadow: $args;
+}
+
+
+@mixin gradient($base) {
+  @each $orientation in $orientation-gradient-list{
+    .gradient#{$orientation}{
+      background:gradient($base,$orientation);
+    }
+  }
+}
+  //***************************************
+//*             HIDE ELEMENT FOR         **
+//                READER                 **
+//*****************************************
+
+  %visuallyhidden {
+    margin: -1px;
+    padding: 0;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip: rect(0, 0, 0, 0);
+    position: absolute;
+  }

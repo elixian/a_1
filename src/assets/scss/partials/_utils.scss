@@ -1,0 +1,30 @@
+
+/*
+=================*/
+.block {
+    display: block;
+}
+
+
+
+
+/*          GRID
+=======================================*/
+.grid{
+    display:grid;
+    grid-template-columns: repeat(4,auto);
+    justify-content: center;
+    grid-row-gap: 24px;
+    grid-column-gap: 30px;
+}
+
+.justify-center{
+    justify-self: center;
+}
+
+/*      Shadow box
+========================== */
+
+.shadowed{
+    @include shadow();
+}

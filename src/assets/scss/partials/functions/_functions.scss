@@ -1,0 +1,40 @@
+// Function to access colors in palette with optional tone/shade
+
+@function color($semantic, $tone:'base'){
+	
+	@if map-has-key($palette, $semantic){
+		$color: map-get($palette,$semantic);
+		
+		@if map-has-key($color,$tone){
+			$tint : map-get($color,$tone);
+			@warn "color tint `#{$tint}`";
+			@return $tint;
+        }
+        @warn "unknown tone `#{$tone}` in color";
+         
+    }@else{
+        @warn "no color define in palette, return fdefault trasparent ";
+        @return 'transparent';
+    }
+
+}
+
+// font size mixins
+@function calculateRem($size) {
+    $remSize: $size / 16px;
+    @return $remSize * 1rem;
+  }
+
+  // TODO
+  //function setnewShadow($base-shadow, $blur:"", $shadow-color)
+
+
+  // Function gradientlinear
+
+  @function gradient($base,$orientation: 'top'){
+      @if map-has-key($orientation-gradient-list, $orientation){
+        $tint : lighten($base,20%);
+        @return linear-gradient(map-get($orientation-gradient-list,$orientation), $base 0%, $tint 100%);
+      }
+      
+  }

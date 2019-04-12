@@ -1,0 +1,56 @@
+
+/*             CSS DISPLAY EXEMPLE
+===============================================*/
+*{
+    font-family: $font-family_poppins;
+    box-sizing: border-box;
+}
+body{
+    background-color: #f7f7f7;
+}
+section{
+    text-align: center;
+    margin:5rem auto;
+    .grid{
+        margin-bottom:4rem;
+        &.col-2{
+            grid-template-columns: repeat(2,auto);
+            grid-column-gap: 13rem;
+        }
+    }
+    .main_title{
+        font-family: $font-family_acme;
+    font-size: 3rem;
+    font-weight: bold;
+    letter-spacing: 16px;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 0;
+    transform-origin: center;
+    text-shadow:  0px 1px 2px #000000, -1px 0px 9px #b3b3b3;
+    color: #ffffff;
+    }
+}
+article{
+    display: inline-table;
+    margin: 2rem auto;
+    width: 60%;
+    padding: 3rem;
+    background: white;
+    box-shadow: 0px 0px 2px black;
+
+    .info{
+        margin-top:.5rem;
+        display: block;
+        text-align:center;
+        font-size: .6rem;
+        padding: 0.5rem;
+        border: 1px dotted brown;
+        color: color('neutral','dark');
+        margin-bottom:1rem;
+
+        &-class{
+            background: color('neutral','light');
+        }
+    }
+}
